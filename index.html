@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <title>Котята-математики</title>
+  <meta name="description" content="Весёлая математика с тремя котятами: счёт, сложение, вычитание, умножение, деление и задачки.">
+  <meta name="theme-color" content="#5BB8F5">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Котята">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="app">
+
+    <!-- ГЛАВНЫЙ ЭКРАН -->
+    <section id="home" class="screen active">
+      <div class="sky-deco"><div class="cloud c1"></div><div class="cloud c2"></div><div class="cloud c3"></div><div class="sun"></div></div>
+      <header class="home-top">
+        <button class="pill fish-pill" data-go="aquarium" aria-label="Аквариум"><span>🐟</span><b class="fish-count">0</b></button>
+        <button class="icon-btn gear" id="gearBtn" aria-label="Для взрослых (удерживайте)">⚙️<i class="hold-ring"></i></button>
+      </header>
+      <h1 class="title">Котята<br><span>математики</span></h1>
+      <div class="hill">
+        <div class="trio" id="trio"></div>
+      </div>
+      <button class="big-btn play-btn" data-go="topics">▶ Играть</button>
+    </section>
+
+    <!-- ТЕМЫ -->
+    <section id="topics" class="screen">
+      <header class="bar">
+        <button class="icon-btn" data-go="home" aria-label="Назад">⬅</button>
+        <h2>Что будем учить?</h2>
+        <button class="pill fish-pill" data-go="aquarium"><span>🐟</span><b class="fish-count">0</b></button>
+      </header>
+      <div class="topic-grid" id="topicGrid"></div>
+    </section>
+
+    <!-- ИГРА -->
+    <section id="game" class="screen">
+      <header class="bar">
+        <button class="icon-btn" id="quitBtn" aria-label="Назад">⬅</button>
+        <div class="dots" id="dots"></div>
+        <button class="pill fish-pill"><span>🐟</span><b class="fish-count">0</b></button>
+      </header>
+      <div class="game-body">
+        <div class="guide">
+          <div class="bubble" id="bubble">Привет!</div>
+          <div class="guide-cat" id="guideCat"></div>
+          <div class="guide-tools">
+            <button class="round-btn" id="speakBtn" aria-label="Повторить">🔊</button>
+            <button class="round-btn" id="hintBtn" aria-label="Подсказка">💡</button>
+          </div>
+        </div>
+        <div class="task">
+          <div class="task-card" id="taskCard">
+            <p class="prompt" id="prompt"></p>
+            <div class="expr" id="expr"></div>
+            <div class="visual" id="visual"></div>
+            <p class="hint-text" id="hintText"></p>
+          </div>
+          <div class="answers" id="answers"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- РЕЗУЛЬТАТ -->
+    <section id="result" class="screen">
+      <div class="result-box">
+        <h2 id="resultTitle">Ура!</h2>
+        <div class="stars" id="resultStars"></div>
+        <p class="result-fish" id="resultFish"></p>
+        <div class="trio small" id="resultTrio"></div>
+        <div class="result-btns">
+          <button class="big-btn secondary" id="againBtn">↻ Ещё раз</button>
+          <button class="big-btn" id="nextBtn">Дальше ▶</button>
+        </div>
+        <button class="link-btn" data-go="topics">К темам</button>
+      </div>
+    </section>
+
+    <!-- АКВАРИУМ -->
+    <section id="aquarium" class="screen">
+      <header class="bar">
+        <button class="icon-btn" data-go="back" aria-label="Назад">⬅</button>
+        <h2>Аквариум</h2>
+        <button class="pill fish-pill"><span>🐟</span><b class="fish-count">0</b></button>
+      </header>
+      <div class="tank" id="tank"><div class="bubbles"></div><div class="sand"></div></div>
+      <p class="tank-goal" id="tankGoal"></p>
+    </section>
+
+    <!-- НАСТРОЙКИ (для взрослых) -->
+    <section id="settings" class="screen">
+      <header class="bar">
+        <button class="icon-btn" data-go="home" aria-label="Назад">⬅</button>
+        <h2>Для взрослых</h2>
+        <span></span>
+      </header>
+      <div class="settings-list">
+        <label class="row"><span>🗣 Озвучивать задания</span><input type="checkbox" id="setVoice"></label>
+        <label class="row"><span>🔔 Звуки</span><input type="checkbox" id="setSound"></label>
+        <label class="row"><span>🔓 Открыть все уровни</span><input type="checkbox" id="setUnlock"></label>
+        <label class="row"><span>📝 Заданий в раунде</span>
+          <select id="setPerRound"><option>5</option><option>8</option><option>10</option><option>15</option></select></label>
+        <div class="row"><span>🔈 Проверить голос</span><button class="small-btn" id="testVoice">Сказать</button></div>
+        <div class="row"><span>📊 Прогресс</span><span id="statsText"></span></div>
+        <div class="row"><span>🗑 Сбросить прогресс</span><button class="small-btn danger" id="resetBtn">Сбросить</button></div>
+        <p class="note">Игра работает без интернета. Чтобы установить на iPad/iPhone: Safari → «Поделиться» → «На экран „Домой“».
+        Уровень открывается, когда предыдущий пройден на 2★ и больше. Ошибки не наказываются: после первой ошибки появляется картинка, после второй — подсказка, после третьей котёнок покажет ответ.</p>
+      </div>
+    </section>
+
+    <!-- выбор уровня -->
+    <div class="modal" id="levelModal">
+      <div class="modal-box">
+        <button class="icon-btn close" id="closeModal" aria-label="Закрыть">✕</button>
+        <div class="modal-head"><div id="modalCat"></div><h2 id="modalTitle"></h2></div>
+        <div class="level-grid" id="levelGrid"></div>
+      </div>
+    </div>
+
+    <div id="confetti"></div>
+  </div>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

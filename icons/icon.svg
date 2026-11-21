@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6EC6FF"/><stop offset="1" stop-color="#B9E8FF"/></linearGradient></defs>
+  <rect width="512" height="512" rx="112" fill="url(#g)"/>
+  <ellipse cx="256" cy="560" rx="380" ry="150" fill="#7ED957"/>
+  <g transform="translate(-12.487804878048792 48.5151219512195) scale(2.684878048780488)">
+    <g class="head">
+      <!-- уши -->
+      <path d="M44 84 L46 20 L94 50 Z" fill="#F07A1A" stroke="#94440A" stroke-width="3.5" stroke-linejoin="round"/>
+      <path d="M54 72 L56 36 L82 54 Z" fill="#FFC08A"/>
+      <path d="M156 84 L154 20 L106 50 Z" fill="#F07A1A" stroke="#94440A" stroke-width="3.5" stroke-linejoin="round"/>
+      <path d="M146 72 L144 36 L118 54 Z" fill="#FFC08A"/>
+      <!-- голова -->
+      <path d="M100 42 C 150 42, 170 72, 168 102 C 166 140, 136 156, 100 156 C 64 156, 34 140, 32 102 C 30 72, 50 42, 100 42 Z" fill="#F07A1A" stroke="#94440A" stroke-width="3.5"/>
+      <!-- полоски -->
+      <g stroke="#94440A" stroke-width="4" stroke-linecap="round" fill="none">
+        <path d="M90 46 q3 8 0 14"/><path d="M100 44 v16"/><path d="M110 46 q-3 8 0 14"/>
+        <path d="M34 104 l18 3"/><path d="M35 116 l17 -1"/>
+        <path d="M166 104 l-18 3"/><path d="M165 116 l-17 -1"/>
+      </g>
+      <!-- мордочка -->
+      <ellipse cx="100" cy="124" rx="24" ry="17" fill="#FFC08A" opacity=".55"/>
+      <g class="eyes">
+        <ellipse cx="78" cy="92" rx="13" ry="15" fill="#fff" stroke="#94440A" stroke-width="2.5"/>
+        <ellipse cx="122" cy="92" rx="13" ry="15" fill="#fff" stroke="#94440A" stroke-width="2.5"/>
+        <g class="pupils">
+          <circle cx="81" cy="95" r="6.5" fill="#2B1A12"/><circle cx="83" cy="92" r="2.2" fill="#fff"/>
+          <circle cx="119" cy="95" r="6.5" fill="#2B1A12"/><circle cx="121" cy="92" r="2.2" fill="#fff"/>
+        </g>
+      </g>
+      
+      <ellipse cx="100" cy="112" rx="10" ry="7" fill="#2B1A12"/>
+      <g class="mouth" stroke="#2B1A12" stroke-width="3" fill="none" stroke-linecap="round">
+        <path class="m-happy" d="M84 124 Q92 136 100 124 Q108 136 116 124"/>
+        <ellipse class="m-wow" display="none" cx="100" cy="132" rx="7" ry="9" fill="#8A2C1C" stroke-width="2.5"/>
+        <path class="m-sad" display="none" d="M88 134 Q100 126 112 134"/>
+      </g>
+      <g stroke="#3a2a22" stroke-width="1.6" stroke-linecap="round">
+        <path d="M60 116 L22 108"/><path d="M60 121 L20 121"/><path d="M60 126 L23 134"/>
+        <path d="M140 116 L178 108"/><path d="M140 121 L180 121"/><path d="M140 126 L177 134"/>
+      </g>
+    </g>
+    <g class="cap">
+      <path d="M64 58 Q100 8 136 58 Z" fill="#E8333A" stroke="#A3161C" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M128 52 Q160 48 176 60 Q154 66 126 60 Z" fill="#E8333A" stroke="#A3161C" stroke-width="3" stroke-linejoin="round"/>
+      <circle cx="100" cy="32" r="5" fill="#A3161C"/>
+      <path d="M80 50 Q100 30 120 50" stroke="#fff" stroke-width="3" fill="none" opacity=".7"/>
+    </g></g>
+  <g font-family="Arial Rounded MT Bold, Arial, sans-serif" font-weight="900" font-size="92" fill="#fff" stroke="#E5672A" stroke-width="10" paint-order="stroke">
+    <text x="25.6" y="97.28">1</text>
+    <text x="419.84000000000003" y="97.28">+</text>
+  </g>
+</svg>
