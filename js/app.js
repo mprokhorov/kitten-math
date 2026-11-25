@@ -3,7 +3,7 @@ import { TOPICS, topicById, SLOT, pick } from './tasks.js';
 
 // ================= Состояние =================
 const KEY = 'kitten-math-v1';
-const DEFAULTS = { fish: 0, solved: 0, progress: {}, settings: { voice: true, sound: true, unlockAll: false, perRound: 8 } };
+const DEFAULTS = { fish: 0, solved: 0, progress: {}, settings: { sound: true, unlockAll: false, perRound: 8 } };
 let S = load();
 function load() {
   try {
@@ -18,66 +18,92 @@ const $ = (s) => document.querySelector(s);
 const $$ = (s) => document.querySelectorAll(s);
 const CAT_ORDER = ['kompot', 'karamelka', 'korzhik'];
 
-// ================= Звуки =================
+// ================= Мягкие звуки и котячьи голоса =================
 let actx = null;
 function ac() {
   if (!actx) { const C = window.AudioContext || window.webkitAudioContext; if (C) actx = new C(); }
   if (actx && actx.state === 'suspended') actx.resume();
   return actx;
 }
-function tone(f, t0, dur, type = 'sine', vol = 0.16, f2) {
+function bell(f, t0, dur, vol = 0.12, f2) {
   const a = ac(); if (!a) return;
-  const o = a.createOscillator(), g = a.createGain();
   const t = a.currentTime + t0;
-  o.type = type; o.frequency.setValueAtTime(f, t);
-  if (f2) o.frequency.exponentialRampToValueAtTime(f2, t + dur);
+  const o1 = a.createOscillator(), o2 = a.createOscillator(), g = a.createGain();
+  o1.type = 'sine'; o2.type = 'triangle';
+  o1.frequency.setValueAtTime(f, t);
+  o2.frequency.setValueAtTime(f * 2, t);
+  if (f2) {
+    o1.frequency.exponentialRampToValueAtTime(f2, t + dur);
+    o2.frequency.exponentialRampToValueAtTime(f2 * 2, t + dur);
+  }
+  const g2 = a.createGain();
+  g2.gain.value = 0.16;
   g.gain.setValueAtTime(0.0001, t);
-  g.gain.exponentialRampToValueAtTime(vol, t + 0.02);
+  g.gain.exponentialRampToValueAtTime(vol, t + 0.015);
   g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
-  o.connect(g).connect(a.destination); o.start(t); o.stop(t + dur + 0.05);
+  o1.connect(g); o2.connect(g2).connect(g); g.connect(a.destination);
+  o1.start(t); o2.start(t); o1.stop(t + dur + 0.04); o2.stop(t + dur + 0.04);
+}
+const CAT_PITCH = {
+  kompot:    { f0: 380, fp: 540, f1: 350, dur: 0.34 },
+  korzhik:   { f0: 500, fp: 720, f1: 460, dur: 0.28 },
+  karamelka: { f0: 630, fp: 900, f1: 590, dur: 0.25 },
+};
+function kittenNote(t0, f0, fp, f1, dur, vol = 0.13) {
+  const a = ac(); if (!a) return;
+  const t = a.currentTime + t0;
+  // Мягкий тембр: чистая основа + тёплая 2-я гармоника через плавный формантный фильтр («ми-и-у»)
+  const o1 = a.createOscillator(), o2 = a.createOscillator();
+  const g2 = a.createGain(), lp = a.createBiquadFilter(), g = a.createGain();
+  o1.type = 'sine'; o2.type = 'triangle';
+  g2.gain.value = 0.28;
+  lp.type = 'lowpass'; lp.Q.value = 1.6;
+  lp.frequency.setValueAtTime(f0 * 1.6, t);
+  lp.frequency.exponentialRampToValueAtTime(fp * 2.4, t + dur * 0.42);
+  lp.frequency.exponentialRampToValueAtTime(f1 * 1.5, t + dur);
+
+  o1.frequency.setValueAtTime(f0, t);
+  o1.frequency.exponentialRampToValueAtTime(fp, t + dur * 0.42);
+  o1.frequency.exponentialRampToValueAtTime(f1, t + dur);
+  o2.frequency.setValueAtTime(f0 * 2, t);
+  o2.frequency.exponentialRampToValueAtTime(fp * 2, t + dur * 0.42);
+  o2.frequency.exponentialRampToValueAtTime(f1 * 2, t + dur);
+
+  g.gain.setValueAtTime(0.0001, t);
+  g.gain.exponentialRampToValueAtTime(vol, t + Math.min(0.035, dur * 0.22));
+  g.gain.exponentialRampToValueAtTime(vol * 0.72, t + dur * 0.65);
+  g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+
+  o1.connect(lp); o2.connect(g2).connect(lp); lp.connect(g).connect(a.destination);
+  o1.start(t); o2.start(t); o1.stop(t + dur + 0.04); o2.stop(t + dur + 0.04);
 }
 const SFX = {
-  tap() { tone(700, 0, 0.07, 'triangle', 0.08); },
-  ok() { [523, 659, 784, 1047].forEach((f, i) => tone(f, i * 0.08, 0.28, 'triangle', 0.14)); },
-  bad() { tone(260, 0, 0.16, 'sine', 0.14, 200); tone(200, 0.14, 0.24, 'sine', 0.12, 160); },
-  win() { [523, 659, 784, 659, 784, 1047].forEach((f, i) => tone(f, i * 0.12, 0.3, 'square', 0.06)); },
-  pop() { tone(900, 0, 0.08, 'sine', 0.12, 1400); },
-  meow() {
-    const a = ac(); if (!a) return;
-    const o = a.createOscillator(), g = a.createGain(), lp = a.createBiquadFilter();
-    const t = a.currentTime; o.type = 'sawtooth'; lp.type = 'lowpass'; lp.frequency.value = 1800;
-    o.frequency.setValueAtTime(480, t); o.frequency.linearRampToValueAtTime(820, t + 0.18); o.frequency.linearRampToValueAtTime(420, t + 0.55);
-    g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.1, t + 0.05); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.6);
-    o.connect(lp).connect(g).connect(a.destination); o.start(t); o.stop(t + 0.65);
+  tap() { bell(640, 0, 0.07, 0.07, 740); },
+  pop() { bell(720, 0, 0.09, 0.09, 1180); },
+  hint() { [523, 659, 784].forEach((f, i) => bell(f, i * 0.06, 0.22, 0.08)); },
+  ok(catId) {
+    [523, 659, 784, 1047].forEach((f, i) => bell(f, i * 0.075, 0.28, 0.11));
+    const p = CAT_PITCH[catId] || CAT_PITCH.korzhik;
+    kittenNote(0.24, p.f0 * 1.05, p.fp * 1.12, p.fp * 0.98, 0.18, 0.09);
+  },
+  bad() { bell(330, 0, 0.16, 0.1, 270); bell(270, 0.13, 0.22, 0.08, 220); },
+  meow(catId) {
+    const p = CAT_PITCH[catId] || CAT_PITCH.korzhik;
+    const j = 0.96 + Math.random() * 0.08;
+    kittenNote(0, p.f0 * j, p.fp * j, p.f1 * j, p.dur, 0.14);
+  },
+  miumiu(catId) {
+    const p = CAT_PITCH[catId] || CAT_PITCH.karamelka;
+    [0.95, 1.06, 1.18].forEach((k, i) => {
+      kittenNote(i * 0.19, p.f0 * k, p.fp * k, p.f1 * k, 0.17, 0.12);
+    });
+  },
+  win() {
+    [523, 659, 784, 659, 784, 1047].forEach((f, i) => bell(f, i * 0.11, 0.32, 0.1));
+    SFX.miumiu('karamelka');
   },
 };
-function play(name) { if (S.settings.sound) SFX[name]?.(); }
-
-// ================= Речь =================
-let ruVoice = null;
-const hasTTS = 'speechSynthesis' in window;
-function pickVoice() {
-  const vs = speechSynthesis.getVoices().filter((v) => v.lang && v.lang.toLowerCase().startsWith('ru'));
-  ruVoice = vs.find((v) => /milena|милена/i.test(v.name)) || vs.find((v) => v.localService) || vs[0] || null;
-}
-if (hasTTS) { pickVoice(); speechSynthesis.addEventListener?.('voiceschanged', pickVoice); }
-function cleanSpeech(t) {
-  return t.replace(/−/g, ' минус ').replace(/×/g, ' умножить на ').replace(/÷/g, ' разделить на ')
-    .replace(/\s—\s/g, ', ').replace(/[\u{1F300}-\u{1FAFF}☀-➿]/gu, '').replace(/\s+/g, ' ').trim();
-}
-let speakTimer = 0;
-function say(text, force) {
-  if (!hasTTS || !text || (!S.settings.voice && !force)) return;
-  speechSynthesis.cancel();
-  clearTimeout(speakTimer);
-  speakTimer = setTimeout(() => {
-    const u = new SpeechSynthesisUtterance(cleanSpeech(text));
-    u.lang = 'ru-RU'; if (ruVoice) u.voice = ruVoice;
-    u.rate = 0.92; u.pitch = 1.15;
-    speechSynthesis.speak(u);
-  }, 60);
-}
-function hush() { if (hasTTS) { clearTimeout(speakTimer); speechSynthesis.cancel(); } }
+function play(name, arg) { if (S.settings.sound) SFX[name]?.(arg); }
 
 // ================= Мелочи UI =================
 function animate(el, cls, ms = 700) {
@@ -134,7 +160,6 @@ function show(id) {
   if (id === 'aquarium') aquaReturn = current;
   $$('.screen').forEach((s) => s.classList.toggle('active', s.id === id));
   current = id;
-  if (id !== 'game') hush();
   if (id === 'home') renderHome();
   if (id === 'topics') renderTopics();
   if (id === 'aquarium') renderAquarium();
@@ -157,13 +182,16 @@ function renderHome() {
   const trio = $('#trio');
   if (!trio.children.length) trio.innerHTML = trioHTML();
 }
+let catTapCount = 0;
 function catTap(e) {
   const w = e.target.closest('.cat-wrap');
   if (!w) return;
+  const id = w.dataset.cat;
   const svg = w.querySelector('svg');
   animate(svg, 'jump'); setMood(svg, 'wow', 900);
-  play('meow');
-  say(CATS[w.dataset.cat].intro, true);
+  catTapCount++;
+  play(catTapCount % 3 === 0 ? 'miumiu' : 'meow', id);
+  toast(CATS[id].intro);
 }
 $('#trio').addEventListener('click', catTap);
 $('#resultTrio').addEventListener('click', catTap);
@@ -298,7 +326,6 @@ $('#visual').addEventListener('click', (e) => {
     const c = Number(box.dataset.counted || 0) + 1;
     box.dataset.counted = c; o.dataset.n = c; o.classList.add('counted');
     play('pop');
-    if (S.settings.voice) say(String(c));
   }
 });
 
@@ -337,6 +364,12 @@ function setGuide(id) {
   R.guideId = id;
   $('#guideCat').innerHTML = catSVG(id);
 }
+$('#guideCat').addEventListener('click', () => {
+  const svg = guideSVG();
+  if (!svg || !R?.guideId) return;
+  animate(svg, 'jump'); setMood(svg, 'wow', 800);
+  play('meow', R.guideId);
+});
 function bubble(text) {
   const b = $('#bubble'); b.textContent = text; animate(b, 'pop', 400);
 }
@@ -372,7 +405,6 @@ function nextTask() {
 
   bubble(T.bubble || pick(START));
   renderAnswers();
-  say(T.speak);
 }
 function renderAnswers() {
   const T = R.task, box = $('#answers');
@@ -424,14 +456,14 @@ function check(v, btn) {
     s.textContent = T.answer; s.className = 'slot good';
     animate(s, 'pop', 500);
     if (btn && btn.classList.contains('ans')) btn.classList.add('good');
-    play('ok');
+    play('ok', R.guideId);
     const first = R.tries === 0;
     if (first) { R.earned++; S.fish++; flyFish(s); }
     S.solved++; save();
     R.results[R.i] = first; R.i++;
     renderDots();
     setMood(svg, 'wow', 1100); animate(svg, 'jump');
-    const p = pick(PRAISE); bubble(p); say(p);
+    bubble(pick(PRAISE));
     if (T.visual && $('#visual').dataset.shown !== '1' && T.visual.type !== 'div') showVisual(T.visual);
     setTimeout(() => { if (current === 'game' && R && R.task === T) nextTask(); }, 1500);
     return;
@@ -446,7 +478,7 @@ function check(v, btn) {
   const maxTries = T.input === 'compare' ? 2 : 3;
   if (R.tries >= maxTries) return reveal();
   if (R.tries === 1) {
-    const m = pick(AGAIN); bubble(m); say(m);
+    bubble(pick(AGAIN));
     if (T.visual) showVisual(T.visual);
   } else {
     giveHint();
@@ -458,7 +490,6 @@ function giveHint() {
   const h = T.hint || 'Подумай ещё. Можно посчитать на пальчиках!';
   $('#hintText').textContent = '💡 ' + h;
   bubble('Вот подсказка!');
-  say(h);
 }
 function reveal() {
   const T = R.task;
@@ -468,13 +499,11 @@ function reveal() {
   renderDots();
   if (T.visual) showVisual(T.visual);
   const ansWord = T.input === 'compare' ? { '<': 'меньше', '>': 'больше', '=': 'равно' }[T.answer] : T.answer;
-  const m = `Правильный ответ: ${ansWord}. В следующий раз получится!`;
-  bubble(m); say(m);
+  bubble(`Правильный ответ: ${ansWord}. В следующий раз получится!`);
   $('#answers').className = 'answers';
   $('#answers').innerHTML = '<button class="big-btn next-btn">Дальше ▶</button>';
 }
-$('#speakBtn').addEventListener('click', () => { if (R?.task) say(R.task.speak, true); });
-$('#hintBtn').addEventListener('click', () => { if (R?.task) { play('tap'); giveHint(); } });
+$('#hintBtn').addEventListener('click', () => { if (R?.task) { play('hint'); giveHint(); } });
 $('#quitBtn').addEventListener('click', () => { play('tap'); R = null; show('topics'); });
 
 function finishRound() {
@@ -502,7 +531,6 @@ function finishRound() {
   $('#againBtn').classList.toggle('secondary', nextOpen);
   play('win');
   if (st >= 2) confetti(st === 3 ? 90 : 45);
-  say(title + (st === 3 ? ' Три звезды!' : ''));
 }
 $('#againBtn').addEventListener('click', () => { play('tap'); startRound(R.t.id, R.lvl); });
 $('#nextBtn').addEventListener('click', () => { play('tap'); startRound(R.t.id, R.lvl + 1); });
@@ -545,7 +573,6 @@ $('#tank').addEventListener('click', (e) => {
 
 // ================= Настройки =================
 function renderSettings() {
-  $('#setVoice').checked = S.settings.voice;
   $('#setSound').checked = S.settings.sound;
   $('#setUnlock').checked = S.settings.unlockAll;
   $('#setPerRound').value = String(S.settings.perRound);
@@ -553,15 +580,9 @@ function renderSettings() {
   const max = TOPICS.reduce((a, t) => a + t.levels.length * 3, 0);
   $('#statsText').textContent = `★ ${total}/${max} · решено ${S.solved} · 🐟 ${S.fish}`;
 }
-$('#setVoice').addEventListener('change', (e) => { S.settings.voice = e.target.checked; save(); });
 $('#setSound').addEventListener('change', (e) => { S.settings.sound = e.target.checked; save(); });
 $('#setUnlock').addEventListener('change', (e) => { S.settings.unlockAll = e.target.checked; save(); });
 $('#setPerRound').addEventListener('change', (e) => { S.settings.perRound = Number(e.target.value); save(); });
-$('#testVoice').addEventListener('click', () => {
-  say('Привет! Я Компот. Сколько будет 2 плюс 3?', true);
-  if (hasTTS && !ruVoice) setTimeout(() => toast('Русский голос не найден — проверьте настройки устройства'), 800);
-  if (!hasTTS) toast('Это устройство не умеет озвучивать текст');
-});
 $('#resetBtn').addEventListener('click', () => {
   if (!confirm('Сбросить все звёзды и рыбок?')) return;
   S = JSON.parse(JSON.stringify({ ...DEFAULTS, settings: S.settings }));
