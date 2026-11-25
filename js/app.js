@@ -159,6 +159,7 @@ let aquaReturn = 'home';
 function show(id) {
   if (id === 'aquarium') aquaReturn = current;
   $$('.screen').forEach((s) => s.classList.toggle('active', s.id === id));
+  document.documentElement.classList.toggle('on-home', id === 'home');
   current = id;
   if (id === 'home') renderHome();
   if (id === 'topics') renderTopics();
