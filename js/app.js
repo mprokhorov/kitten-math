@@ -16,7 +16,7 @@ function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch { 
 
 const $ = (s) => document.querySelector(s);
 const $$ = (s) => document.querySelectorAll(s);
-const CAT_ORDER = ['ryzhik', 'romashka', 'timka'];
+const CAT_ORDER = ['kompot', 'karamelka', 'korzhik'];
 
 // ================= Звуки =================
 let actx = null;
@@ -303,7 +303,7 @@ $('#visual').addEventListener('click', (e) => {
 });
 
 // ================= Игра =================
-const PRAISE = ['Молодец!', 'Верно!', 'Супер!', 'Умница!', 'Так держать!', 'Мяу! Правильно!', 'Здорово!', 'Отлично!', 'Ты настоящий математик!'];
+const PRAISE = ['Молодец!', 'Верно!', 'Супер!', 'Умница!', 'Так держать!', 'Миу-миу-миу! Правильно!', 'Здорово!', 'Отлично!', 'Ты настоящий математик!'];
 const AGAIN = ['Попробуй ещё!', 'Почти! Подумай ещё.', 'Не спеши, посчитай ещё раз.', 'Хм-м… Давай ещё разок!'];
 const START = ['Давай решим!', 'Подумай!', 'Ты справишься!', 'Интересно, сколько?'];
 let R = null;
@@ -558,7 +558,7 @@ $('#setSound').addEventListener('change', (e) => { S.settings.sound = e.target.c
 $('#setUnlock').addEventListener('change', (e) => { S.settings.unlockAll = e.target.checked; save(); });
 $('#setPerRound').addEventListener('change', (e) => { S.settings.perRound = Number(e.target.value); save(); });
 $('#testVoice').addEventListener('click', () => {
-  say('Привет! Я Рыжик. Сколько будет 2 плюс 3?', true);
+  say('Привет! Я Компот. Сколько будет 2 плюс 3?', true);
   if (hasTTS && !ruVoice) setTimeout(() => toast('Русский голос не найден — проверьте настройки устройства'), 800);
   if (!hasTTS) toast('Это устройство не умеет озвучивать текст');
 });

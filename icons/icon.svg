@@ -1,52 +1,306 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6EC6FF"/><stop offset="1" stop-color="#B9E8FF"/></linearGradient></defs>
-  <rect width="512" height="512" rx="112" fill="url(#g)"/>
-  <ellipse cx="256" cy="560" rx="380" ry="150" fill="#7ED957"/>
-  <g transform="translate(-12.487804878048792 48.5151219512195) scale(2.684878048780488)">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="45%" r="65%">
+      <stop offset="0%" stop-color="#FFC23C"/>
+      <stop offset="100%" stop-color="#EE7B10"/>
+    </radialGradient>
+    <clipPath id="circ">
+      <circle cx="256" cy="256" r="218.0"/>
+    </clipPath>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+  <circle cx="256" cy="256" r="218.0" fill="#4CC0F4"/>
+  <g clip-path="url(#circ)">
+    <g transform="translate(0.0 0.0) scale(1.000)">
+      <g transform="translate(-8 92) scale(1.62)">
+    
+    <path d="M146 214 C 180 220, 194 188, 180 160" stroke="#5C2406" stroke-width="17" fill="none" stroke-linecap="round"/>
+    <path d="M146 214 C 180 220, 194 188, 180 160" stroke="#F78506" stroke-width="11.5" fill="none" stroke-linecap="round"/>
+    <path d="M146 214 C 180 220, 194 188, 180 160" stroke="#5C2406" stroke-width="11.5" fill="none" stroke-dasharray="6 10" stroke-dashoffset="-3"/>
+    <!-- ножки и тёмно-зелёные шортики -->
+    <g stroke-linecap="round">
+      <line x1="82" y1="226" x2="82" y2="253" stroke="#5C2406" stroke-width="6"/>
+      <line x1="118" y1="226" x2="118" y2="253" stroke="#5C2406" stroke-width="6"/>
+    </g>
+    <rect x="72" y="218" width="20" height="24" rx="3" fill="#2E6A36" stroke="#194020" stroke-width="2.8"/>
+    <rect x="108" y="218" width="20" height="24" rx="3" fill="#2E6A36" stroke="#194020" stroke-width="2.8"/>
+    
+    <ellipse cx="78" cy="256" rx="12" ry="6.5" fill="#6D3110" stroke="#221006" stroke-width="2.2"/>
+    <ellipse cx="122" cy="256" rx="12" ry="6.5" fill="#6D3110" stroke="#221006" stroke-width="2.2"/>
+    <!-- ручки с бирюзовыми рукавами -->
+    <g class="arm arm-l">
+      <path d="M56 164 L28 190 L38 202 L62 184 Z" fill="#4FA990" stroke="#265C4E" stroke-width="3" stroke-linejoin="round"/>
+      <line x1="33" y1="196" x2="22" y2="205" stroke="#5C2406" stroke-width="4.5" stroke-linecap="round"/>
+      
+    <g stroke="#5C2406" stroke-width="3.2" stroke-linecap="round">
+      <line x1="22" y1="205" x2="14" y2="200"/>
+      <line x1="22" y1="205" x2="13" y2="206"/>
+      <line x1="22" y1="205" x2="16" y2="212"/>
+    </g>
+    </g>
+    <g class="arm arm-r">
+      <path d="M144 164 L172 190 L162 202 L138 184 Z" fill="#4FA990" stroke="#265C4E" stroke-width="3" stroke-linejoin="round"/>
+      <line x1="167" y1="196" x2="178" y2="205" stroke="#5C2406" stroke-width="4.5" stroke-linecap="round"/>
+      
+    <g stroke="#5C2406" stroke-width="3.2" stroke-linecap="round">
+      <line x1="178" y1="205" x2="186" y2="200"/>
+      <line x1="178" y1="205" x2="187" y2="206"/>
+      <line x1="178" y1="205" x2="184" y2="212"/>
+    </g>
+    </g>
+    <!-- пухлая бирюзовая рубашка-туника -->
+    <path d="M56 152 Q100 144 144 152 L152 222 Q100 232 48 222 Z" fill="#4FA990" stroke="#265C4E" stroke-width="3.2" stroke-linejoin="round"/>
+    <!-- воротничок и 2 пуговки -->
+    <path d="M64 154 L94 176 L100 166 L106 176 L136 154" fill="none" stroke="#265C4E" stroke-width="2.8" stroke-linejoin="round"/>
+    <circle cx="100" cy="183" r="3.6" fill="#265C4E"/>
+    <circle cx="100" cy="196" r="3.6" fill="#265C4E"/>
     <g class="head">
-      <!-- уши -->
-      <path d="M44 84 L46 20 L94 50 Z" fill="#F07A1A" stroke="#94440A" stroke-width="3.5" stroke-linejoin="round"/>
-      <path d="M54 72 L56 36 L82 54 Z" fill="#FFC08A"/>
-      <path d="M156 84 L154 20 L106 50 Z" fill="#F07A1A" stroke="#94440A" stroke-width="3.5" stroke-linejoin="round"/>
-      <path d="M146 72 L144 36 L118 54 Z" fill="#FFC08A"/>
-      <!-- голова -->
-      <path d="M100 42 C 150 42, 170 72, 168 102 C 166 140, 136 156, 100 156 C 64 156, 34 140, 32 102 C 30 72, 50 42, 100 42 Z" fill="#F07A1A" stroke="#94440A" stroke-width="3.5"/>
-      <!-- полоски -->
-      <g stroke="#94440A" stroke-width="4" stroke-linecap="round" fill="none">
-        <path d="M90 46 q3 8 0 14"/><path d="M100 44 v16"/><path d="M110 46 q-3 8 0 14"/>
-        <path d="M34 104 l18 3"/><path d="M35 116 l17 -1"/>
-        <path d="M166 104 l-18 3"/><path d="M165 116 l-17 -1"/>
+      <!-- острые треугольные уши -->
+      <path d="M40 88 L28 30 L80 58 Z" fill="#F78506" stroke="#5C2406" stroke-width="3.4" stroke-linejoin="round"/>
+      <path d="M46 76 L39 44 L70 60 Z" fill="#FFE0B2" stroke="#5C2406" stroke-width="1.6" stroke-linejoin="round"/>
+      <path d="M160 88 L172 30 L120 58 Z" fill="#F78506" stroke="#5C2406" stroke-width="3.4" stroke-linejoin="round"/>
+      <path d="M154 76 L161 44 L130 60 Z" fill="#FFE0B2" stroke="#5C2406" stroke-width="1.6" stroke-linejoin="round"/>
+      <!-- крупная пухлая голова Компота -->
+      <ellipse cx="100" cy="105" rx="68" ry="54" fill="#F78506" stroke="#5C2406" stroke-width="3.4"/>
+      <!-- полоски на щеках -->
+      <g stroke="#7A2E08" stroke-width="4.2" stroke-linecap="round">
+        <path d="M35 98 L54 92"/><path d="M33 108 L55 103"/><path d="M36 118 L54 114"/>
+        <path d="M165 98 L146 92"/><path d="M167 108 L145 103"/><path d="M164 118 L146 114"/>
       </g>
-      <!-- мордочка -->
-      <ellipse cx="100" cy="124" rx="24" ry="17" fill="#FFC08A" opacity=".55"/>
+      <!-- небольшие белые глаза-арочки (фирменный взгляд Компота) -->
       <g class="eyes">
-        <ellipse cx="78" cy="92" rx="13" ry="15" fill="#fff" stroke="#94440A" stroke-width="2.5"/>
-        <ellipse cx="122" cy="92" rx="13" ry="15" fill="#fff" stroke="#94440A" stroke-width="2.5"/>
+        <path d="M68 94 Q70 74 82 76 Q92 78 90 93 Z" fill="#fff" stroke="#221006" stroke-width="2.2" stroke-linejoin="round"/>
+        <path d="M110 93 Q108 78 118 76 Q130 74 132 94 Z" fill="#fff" stroke="#221006" stroke-width="2.2" stroke-linejoin="round"/>
         <g class="pupils">
-          <circle cx="81" cy="95" r="6.5" fill="#2B1A12"/><circle cx="83" cy="92" r="2.2" fill="#fff"/>
-          <circle cx="119" cy="95" r="6.5" fill="#2B1A12"/><circle cx="121" cy="92" r="2.2" fill="#fff"/>
+          <circle cx="81" cy="86" r="3.4" fill="#221006"/>
+          <circle cx="119" cy="86" r="3.4" fill="#221006"/>
         </g>
       </g>
+      <!-- большой чёрный нос-овал -->
+      <ellipse cx="100" cy="108" rx="17" ry="11.5" fill="#221006"/>
       
-      <ellipse cx="100" cy="112" rx="10" ry="7" fill="#2B1A12"/>
-      <g class="mouth" stroke="#2B1A12" stroke-width="3" fill="none" stroke-linecap="round">
-        <path class="m-happy" d="M84 124 Q92 136 100 124 Q108 136 116 124"/>
-        <ellipse class="m-wow" display="none" cx="100" cy="132" rx="7" ry="9" fill="#8A2C1C" stroke-width="2.5"/>
-        <path class="m-sad" display="none" d="M88 134 Q100 126 112 134"/>
+    <g class="mouth">
+      <path class="m-happy" d="M71 125 Q100 135.08 129 125 Q120.88 149 100 149 Q79.12 149 71 125 Z" fill="#8E3415" stroke="#221006" stroke-width="2.8" stroke-linejoin="round"/>
+      <g class="m-wow" display="none">
+        <path d="M69 123 Q100 128 131 123 Q123.2 155 100 155 Q76.8 155 69 123 Z" fill="#8E3415" stroke="#221006" stroke-width="2.8" stroke-linejoin="round"/>
+        <ellipse cx="100" cy="147.8" rx="12.18" ry="6.720000000000001" fill="#E85C5C"/>
       </g>
-      <g stroke="#3a2a22" stroke-width="1.6" stroke-linecap="round">
-        <path d="M60 116 L22 108"/><path d="M60 121 L20 121"/><path d="M60 126 L23 134"/>
-        <path d="M140 116 L178 108"/><path d="M140 121 L180 121"/><path d="M140 126 L177 134"/>
-      </g>
+      <path class="m-sad" display="none" d="M76 143 Q100 127 124 143" fill="none" stroke="#221006" stroke-width="3.2" stroke-linecap="round"/>
     </g>
-    <g class="cap">
-      <path d="M64 58 Q100 8 136 58 Z" fill="#E8333A" stroke="#A3161C" stroke-width="3" stroke-linejoin="round"/>
-      <path d="M128 52 Q160 48 176 60 Q154 66 126 60 Z" fill="#E8333A" stroke="#A3161C" stroke-width="3" stroke-linejoin="round"/>
-      <circle cx="100" cy="32" r="5" fill="#A3161C"/>
-      <path d="M80 50 Q100 30 120 50" stroke="#fff" stroke-width="3" fill="none" opacity=".7"/>
+      <!-- длинные чёрные усы -->
+      <g stroke="#221006" stroke-width="1.8" stroke-linecap="round">
+        <path d="M52 108 L12 104"/><path d="M51 114 L10 116"/><path d="M53 120 L15 128"/>
+        <path d="M148 108 L188 104"/><path d="M149 114 L190 116"/><path d="M147 120 L185 128"/>
+      </g>
+      <!-- фирменный бирюзовый колпак с помпоном -->
+      <g class="hat">
+        <path d="M90 50 C 86 24, 66 6, 42 8 C 28 9, 20 18, 22 27 C 24 24, 30 20, 38 20 C 52 20, 58 34, 57 52 Z" fill="#4FA990" stroke="#265C4E" stroke-width="3" stroke-linejoin="round"/>
+        <circle cx="22" cy="28" r="6.5" fill="#2E5D55" stroke="#1E3F39" stroke-width="2"/>
+        <!-- отворот с вертикальными полосками -->
+        <rect x="52" y="45" width="44" height="17" rx="5" transform="rotate(-10 74 53)" fill="#4FA990" stroke="#265C4E" stroke-width="2.8"/>
+        <g stroke="#265C4E" stroke-width="2" transform="rotate(-10 74 53)">
+          <line x1="61" y1="46" x2="61" y2="61"/><line x1="70" y1="46" x2="70" y2="61"/>
+          <line x1="79" y1="46" x2="79" y2="61"/><line x1="88" y1="46" x2="88" y2="61"/>
+        </g>
+      </g>
     </g></g>
-  <g font-family="Arial Rounded MT Bold, Arial, sans-serif" font-weight="900" font-size="92" fill="#fff" stroke="#E5672A" stroke-width="10" paint-order="stroke">
-    <text x="25.6" y="97.28">1</text>
-    <text x="419.84000000000003" y="97.28">+</text>
+      <g transform="translate(238 42) scale(1.24) rotate(12 100 105)">
+    
+    <path d="M134 218 C 168 224, 182 192, 168 164" stroke="#5C2406" stroke-width="17" fill="none" stroke-linecap="round"/>
+    <path d="M134 218 C 168 224, 182 192, 168 164" stroke="#F78506" stroke-width="11.5" fill="none" stroke-linecap="round"/>
+    <path d="M134 218 C 168 224, 182 192, 168 164" stroke="#5C2406" stroke-width="11.5" fill="none" stroke-dasharray="6 10" stroke-dashoffset="-3"/>
+    <!-- ножки -->
+    <g stroke="#5C2406" stroke-width="5.2" stroke-linecap="round">
+      <line x1="85" y1="224" x2="85" y2="253"/>
+      <line x1="115" y1="224" x2="115" y2="253"/>
+    </g>
+    
+    <ellipse cx="81" cy="256" rx="12" ry="6.5" fill="#6D3110" stroke="#221006" stroke-width="2.2"/>
+    <ellipse cx="119" cy="256" rx="12" ry="6.5" fill="#6D3110" stroke="#221006" stroke-width="2.2"/>
+    <!-- голубые шортики -->
+    <path d="M72 204 L128 204 L132 232 L104 232 L100 222 L96 232 L68 232 Z" fill="#4FA3D9" stroke="#28648C" stroke-width="3" stroke-linejoin="round"/>
+    <!-- полосатые рукава и тонкие ручки -->
+    <defs>
+      <clipPath id="korzhik-shirt-2"><path d="M70 154 Q100 146 130 154 L134 210 Q100 216 66 210 Z"/></clipPath>
+      <clipPath id="korzhik-sl-2"><path d="M70 158 L46 172 L53 186 L74 176 Z"/></clipPath>
+      <clipPath id="korzhik-sr-2"><path d="M130 158 L154 172 L147 186 L126 176 Z"/></clipPath>
+    </defs>
+    <g class="arm arm-l">
+      <line x1="50" y1="180" x2="34" y2="192" stroke="#5C2406" stroke-width="4.6" stroke-linecap="round"/>
+      
+    <g stroke="#5C2406" stroke-width="3.2" stroke-linecap="round">
+      <line x1="34" y1="192" x2="26" y2="187"/>
+      <line x1="34" y1="192" x2="25" y2="193"/>
+      <line x1="34" y1="192" x2="28" y2="199"/>
+    </g>
+      <path d="M70 158 L46 172 L53 186 L74 176 Z" fill="#fff"/>
+      <g clip-path="url(#korzhik-sl-2)"><rect x="20" y="156" width="160" height="4.5" fill="#72C1EE"/><rect x="20" y="164" width="160" height="4.5" fill="#72C1EE"/><rect x="20" y="172" width="160" height="4.5" fill="#72C1EE"/><rect x="20" y="180" width="160" height="4.5" fill="#72C1EE"/><rect x="20" y="188" width="160" height="4.5" fill="#72C1EE"/></g>
+      <path d="M70 158 L46 172 L53 186 L74 176 Z" fill="none" stroke="#2E6485" stroke-width="2.8" stroke-linejoin="round"/>
+    </g>
+    <g class="arm arm-r">
+      <line x1="150" y1="180" x2="166" y2="192" stroke="#5C2406" stroke-width="4.6" stroke-linecap="round"/>
+      
+    <g stroke="#5C2406" stroke-width="3.2" stroke-linecap="round">
+      <line x1="166" y1="192" x2="174" y2="187"/>
+      <line x1="166" y1="192" x2="175" y2="193"/>
+      <line x1="166" y1="192" x2="172" y2="199"/>
+    </g>
+      <path d="M130 158 L154 172 L147 186 L126 176 Z" fill="#fff"/>
+      <g clip-path="url(#korzhik-sr-2)"><rect x="20" y="156" width="160" height="4.5" fill="#72C1EE"/><rect x="20" y="164" width="160" height="4.5" fill="#72C1EE"/><rect x="20" y="172" width="160" height="4.5" fill="#72C1EE"/><rect x="20" y="180" width="160" height="4.5" fill="#72C1EE"/><rect x="20" y="188" width="160" height="4.5" fill="#72C1EE"/></g>
+      <path d="M130 158 L154 172 L147 186 L126 176 Z" fill="none" stroke="#2E6485" stroke-width="2.8" stroke-linejoin="round"/>
+    </g>
+    <!-- полосатая тельняшка -->
+    <path d="M70 154 Q100 146 130 154 L134 210 Q100 216 66 210 Z" fill="#fff"/>
+    <g clip-path="url(#korzhik-shirt-2)"><rect x="20" y="150" width="160" height="4.5" fill="#72C1EE"/><rect x="20" y="159.5" width="160" height="4.5" fill="#72C1EE"/><rect x="20" y="169" width="160" height="4.5" fill="#72C1EE"/><rect x="20" y="178.5" width="160" height="4.5" fill="#72C1EE"/><rect x="20" y="188" width="160" height="4.5" fill="#72C1EE"/><rect x="20" y="197.5" width="160" height="4.5" fill="#72C1EE"/><rect x="20" y="207" width="160" height="4.5" fill="#72C1EE"/></g>
+    <path d="M70 154 Q100 146 130 154 L134 210 Q100 216 66 210 Z" fill="none" stroke="#2E6485" stroke-width="3" stroke-linejoin="round"/>
+    <g class="head">
+      <!-- тёмно-коричневый хохолок из 2 задорных прядок -->
+      <path d="M106 55 L112 22 L120 53 Z" fill="#221006" stroke="#221006" stroke-width="1.5" stroke-linejoin="round"/>
+      <path d="M118 57 L130 24 L132 58 Z" fill="#221006" stroke="#221006" stroke-width="1.5" stroke-linejoin="round"/>
+      <!-- крупные острые уши -->
+      <path d="M50 82 L34 22 L84 58 Z" fill="#F78506" stroke="#5C2406" stroke-width="3.2" stroke-linejoin="round"/>
+      <path d="M54 71 L45 38 L75 59 Z" fill="#FFE0B2" stroke="#5C2406" stroke-width="1.5" stroke-linejoin="round"/>
+      <path d="M150 82 L166 22 L116 58 Z" fill="#F78506" stroke="#5C2406" stroke-width="3.2" stroke-linejoin="round"/>
+      <path d="M146 71 L155 38 L125 59 Z" fill="#FFE0B2" stroke="#5C2406" stroke-width="1.5" stroke-linejoin="round"/>
+      <!-- круглая голова Коржика -->
+      <ellipse cx="100" cy="105" rx="58" ry="51" fill="#F78506" stroke="#5C2406" stroke-width="3.2"/>
+      <!-- полоски на щеках -->
+      <g stroke="#7A2E08" stroke-width="4" stroke-linecap="round">
+        <path d="M44 98 L62 94"/><path d="M43 108 L63 105"/><path d="M46 118 L62 115"/>
+        <path d="M156 98 L138 94"/><path d="M157 108 L137 105"/><path d="M154 118 L138 115"/>
+      </g>
+      <!-- большие выразительные круглые глаза -->
+      <g class="eyes">
+        <circle cx="81" cy="95" r="16" fill="#fff" stroke="#221006" stroke-width="2.2"/>
+        <circle cx="119" cy="95" r="16" fill="#fff" stroke="#221006" stroke-width="2.2"/>
+        <g class="pupils">
+          <circle cx="84" cy="96" r="6" fill="#221006"/><circle cx="86" cy="93.5" r="2" fill="#fff"/>
+          <circle cx="116" cy="96" r="6" fill="#221006"/><circle cx="118" cy="93.5" r="2" fill="#fff"/>
+        </g>
+      </g>
+      <!-- чёрный носик -->
+      <ellipse cx="100" cy="115" rx="10" ry="7" fill="#221006"/>
+      
+    <g class="mouth">
+      <path class="m-happy" d="M78 125 Q100 133.82 122 125 Q115.84 146 100 146 Q84.16 146 78 125 Z" fill="#8E3415" stroke="#221006" stroke-width="2.8" stroke-linejoin="round"/>
+      <g class="m-wow" display="none">
+        <path d="M76 123 Q100 128 124 123 Q117.6 151.25 100 151.25 Q82.4 151.25 76 123 Z" fill="#8E3415" stroke="#221006" stroke-width="2.8" stroke-linejoin="round"/>
+        <ellipse cx="100" cy="144.95" rx="9.24" ry="5.880000000000001" fill="#E85C5C"/>
+      </g>
+      <path class="m-sad" display="none" d="M83 140.75 Q100 127 117 140.75" fill="none" stroke="#221006" stroke-width="3.2" stroke-linecap="round"/>
+    </g>
+      <!-- длинные чёрные усы -->
+      <g stroke="#221006" stroke-width="1.7" stroke-linecap="round">
+        <path d="M55 110 L18 103"/><path d="M54 116 L16 116"/><path d="M55 122 L20 129"/>
+        <path d="M145 110 L182 103"/><path d="M146 116 L184 116"/><path d="M145 122 L180 129"/>
+      </g>
+      <!-- матросская шапочка-бескозырка с якорем и помпоном -->
+      <g class="sailor-hat" transform="translate(66 36) rotate(-26)">
+        <!-- чёрный помпон сверху -->
+        <circle cx="0" cy="-16" r="5" fill="#221006"/>
+        <!-- голубая тулья -->
+        <path d="M-16 0 L-13 18 Q0 23 13 18 L16 0 Z" fill="#7CC4ED" stroke="#285878" stroke-width="2.5" stroke-linejoin="round"/>
+        <!-- белая верхушка-берет -->
+        <ellipse cx="0" cy="-2" rx="22" ry="11" fill="#FFFFFF" stroke="#285878" stroke-width="2.5"/>
+        <ellipse cx="0" cy="-3" rx="14" ry="5" fill="#E3F4FF"/>
+        <!-- маленький тёмный якорь -->
+        <g stroke="#1C394D" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="0" y1="5" x2="0" y2="16"/>
+          <line x1="-4" y1="8.5" x2="4" y2="8.5"/>
+          <path d="M-5.5 13 Q0 18.5 5.5 13"/>
+        </g>
+      </g>
+    </g></g>
+      <g transform="translate(212 224) scale(1.28)">
+    
+    <path d="M130 222 C 164 228, 178 196, 164 168" stroke="#5C2406" stroke-width="17" fill="none" stroke-linecap="round"/>
+    <path d="M130 222 C 164 228, 178 196, 164 168" stroke="#F78506" stroke-width="11.5" fill="none" stroke-linecap="round"/>
+    <path d="M130 222 C 164 228, 178 196, 164 168" stroke="#5C2406" stroke-width="11.5" fill="none" stroke-dasharray="6 10" stroke-dashoffset="-3"/>
+    <!-- тонкие ножки и туфельки -->
+    <g stroke="#5C2406" stroke-width="5" stroke-linecap="round">
+      <line x1="88" y1="224" x2="88" y2="253"/>
+      <line x1="112" y1="224" x2="112" y2="253"/>
+    </g>
+    
+    <ellipse cx="84" cy="256" rx="12" ry="6.5" fill="#6D3110" stroke="#221006" stroke-width="2.2"/>
+    <ellipse cx="116" cy="256" rx="12" ry="6.5" fill="#6D3110" stroke="#221006" stroke-width="2.2"/>
+    <!-- весёлые тонкие ручки в стороны -->
+    <g class="arm arm-l">
+      <path d="M80 176 Q58 176 42 168" stroke="#5C2406" stroke-width="4.8" fill="none" stroke-linecap="round"/>
+      
+    <g stroke="#5C2406" stroke-width="3.2" stroke-linecap="round">
+      <line x1="42" y1="168" x2="34" y2="163"/>
+      <line x1="42" y1="168" x2="33" y2="169"/>
+      <line x1="42" y1="168" x2="36" y2="175"/>
+    </g>
+    </g>
+    <g class="arm arm-r">
+      <path d="M120 176 Q142 176 158 168" stroke="#5C2406" stroke-width="4.8" fill="none" stroke-linecap="round"/>
+      
+    <g stroke="#5C2406" stroke-width="3.2" stroke-linecap="round">
+      <line x1="158" y1="168" x2="166" y2="163"/>
+      <line x1="158" y1="168" x2="167" y2="169"/>
+      <line x1="158" y1="168" x2="164" y2="175"/>
+    </g>
+    </g>
+    <!-- красное платьице-трапеция -->
+    <path d="M84 156 Q100 150 116 156 L136 226 Q100 234 64 226 Z" fill="#E52822" stroke="#7C1410" stroke-width="3.2" stroke-linejoin="round"/>
+    <g class="head">
+      <!-- 3 тонкие волосинки на макушке -->
+      <g stroke="#221006" stroke-width="2" fill="none" stroke-linecap="round">
+        <path d="M98 56 Q96 38 92 32"/>
+        <path d="M102 55 Q104 37 108 30"/>
+        <path d="M106 56 Q112 42 118 36"/>
+      </g>
+      <!-- большие острые ушки -->
+      <path d="M52 84 L38 24 L84 62 Z" fill="#F78506" stroke="#5C2406" stroke-width="3.2" stroke-linejoin="round"/>
+      <path d="M56 74 L48 39 L76 63 Z" fill="#FFE0B2" stroke="#5C2406" stroke-width="1.5" stroke-linejoin="round"/>
+      <path d="M148 84 L162 24 L116 62 Z" fill="#F78506" stroke="#5C2406" stroke-width="3.2" stroke-linejoin="round"/>
+      <path d="M144 74 L152 39 L124 63 Z" fill="#FFE0B2" stroke="#5C2406" stroke-width="1.5" stroke-linejoin="round"/>
+      <!-- круглая рыжая голова -->
+      <ellipse cx="100" cy="108" rx="55" ry="49" fill="#F78506" stroke="#5C2406" stroke-width="3.2"/>
+      <!-- полоски на щеках -->
+      <g stroke="#7A2E08" stroke-width="3.8" stroke-linecap="round">
+        <path d="M47 102 L65 98"/><path d="M46 111 L66 108"/><path d="M49 120 L65 117"/>
+        <path d="M153 102 L135 98"/><path d="M154 111 L134 108"/><path d="M151 120 L135 117"/>
+      </g>
+      <!-- большие круглые глаза с ресничками -->
+      <g class="eyes">
+        <g stroke="#221006" stroke-width="2.1" stroke-linecap="round">
+          <line x1="72" y1="86" x2="65" y2="78"/><line x1="80" y1="83" x2="78" y2="74"/><line x1="88" y1="85" x2="90" y2="76"/>
+          <line x1="112" y1="85" x2="110" y2="76"/><line x1="120" y1="83" x2="122" y2="74"/><line x1="128" y1="86" x2="135" y2="78"/>
+        </g>
+        <circle cx="81" cy="99" r="14.5" fill="#fff" stroke="#221006" stroke-width="2.2"/>
+        <circle cx="119" cy="99" r="14.5" fill="#fff" stroke="#221006" stroke-width="2.2"/>
+        <g class="pupils">
+          <circle cx="83" cy="99" r="5.2" fill="#221006"/><circle cx="85" cy="97" r="1.7" fill="#fff"/>
+          <circle cx="117" cy="99" r="5.2" fill="#221006"/><circle cx="119" cy="97" r="1.7" fill="#fff"/>
+        </g>
+      </g>
+      <!-- чёрный носик -->
+      <ellipse cx="100" cy="117" rx="9" ry="6.2" fill="#221006"/>
+      
+    <g class="mouth">
+      <path class="m-happy" d="M81 127 Q100 134.98 119 127 Q113.68 146 100 146 Q86.32 146 81 127 Z" fill="#8E3415" stroke="#221006" stroke-width="2.8" stroke-linejoin="round"/>
+      <g class="m-wow" display="none">
+        <path d="M79 125 Q100 130 121 125 Q115.2 150.75 100 150.75 Q84.8 150.75 79 125 Z" fill="#8E3415" stroke="#221006" stroke-width="2.8" stroke-linejoin="round"/>
+        <ellipse cx="100" cy="145.05" rx="7.9799999999999995" ry="5.32" fill="#E85C5C"/>
+      </g>
+      <path class="m-sad" display="none" d="M86 141.25 Q100 129 114 141.25" fill="none" stroke="#221006" stroke-width="3.2" stroke-linecap="round"/>
+    </g>
+      <!-- усы -->
+      <g stroke="#221006" stroke-width="1.6" stroke-linecap="round">
+        <path d="M58 112 L22 106"/><path d="M57 118 L20 118"/><path d="M58 124 L24 130"/>
+        <path d="M142 112 L178 106"/><path d="M143 118 L180 118"/><path d="M142 124 L176 130"/>
+      </g>
+      <!-- большой красный бант -->
+      <g class="bow" transform="rotate(8 106 54)">
+        <path d="M104 54 C 92 38, 70 36, 70 54 C 70 70, 92 68, 104 57 Z" fill="#E52822" stroke="#7C1410" stroke-width="2.8" stroke-linejoin="round"/>
+        <path d="M108 54 C 120 38, 142 36, 142 54 C 142 70, 120 68, 108 57 Z" fill="#E52822" stroke="#7C1410" stroke-width="2.8" stroke-linejoin="round"/>
+        <path d="M84 52 L98 55 M84 58 L98 56 M128 52 L114 55 M128 58 L114 56" stroke="#7C1410" stroke-width="1.8" stroke-linecap="round"/>
+        <rect x="99" y="47" width="14" height="16" rx="5" fill="#E52822" stroke="#7C1410" stroke-width="2.6"/>
+      </g>
+    </g></g>
+    </g>
   </g>
 </svg>

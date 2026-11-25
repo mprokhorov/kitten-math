@@ -432,7 +432,7 @@ function mix(level) {
     const a = rnd(2, 9), b = rnd(2, 9);
     return expr([100, '−', a, '×', b, '=', SLOT], 100 - a * b, { pad: true, hint: `Сначала ${a} × ${b} = ${a * b}, потом 100 − ${a * b}.`, bubble: 'Что сначала?' });
   }
-  // level 5 — загадки Рыжика
+  // level 5 — загадки Компота
   const kind = rnd(0, 5);
   if (kind === 0) {
     const n = rnd(3, 50) * 2;
@@ -444,11 +444,11 @@ function mix(level) {
   }
   if (kind === 2) {
     const x = rnd(2, 30), a = rnd(2, 20);
-    return story(`Я задумал число, прибавил к нему ${a} и получил ${x + a}. Какое число я задумал?`, x, { pad: true, hint: `Сделай наоборот: ${x + a} − ${a}.`, cats: ['ryzhik'] });
+    return story(`Я задумал число, прибавил к нему ${a} и получил ${x + a}. Какое число я задумал?`, x, { pad: true, hint: `Сделай наоборот: ${x + a} − ${a}.`, cats: ['kompot'] });
   }
   if (kind === 3) {
     const x = rnd(2, 10), k = rnd(2, 5);
-    return story(`Я задумал число, умножил его на ${k} и получил ${x * k}. Какое число я задумал?`, x, { pad: true, hint: `Сделай наоборот: ${x * k} ÷ ${k}.`, cats: ['ryzhik'] });
+    return story(`Я задумал число, умножил его на ${k} и получил ${x * k}. Какое число я задумал?`, x, { pad: true, hint: `Сделай наоборот: ${x * k} ÷ ${k}.`, cats: ['kompot'] });
   }
   if (kind === 4) {
     const k = rnd(2, 9);
@@ -460,20 +460,20 @@ function mix(level) {
 
 // ---------- ТЕМЫ ----------
 export const TOPICS = [
-  { id: 'count', title: 'Считаем', icon: '123', cat: 'romashka', color: '#FFB347', levels: [
+  { id: 'count', title: 'Считаем', icon: '123', cat: 'karamelka', color: '#FFB347', levels: [
     { desc: 'до 5', gen: () => countTask(1, 5) },
     { desc: 'до 10', gen: () => countTask(3, 10) },
     { desc: 'до 20', gen: () => countTask(8, 20) },
     { desc: 'десятки до 50', gen: () => countTens(20, 50) },
     { desc: 'до 100', gen: () => countTens(30, 99, true) },
   ] },
-  { id: 'compare', title: 'Больше-меньше', icon: '<>', cat: 'romashka', color: '#B388FF', levels: [
+  { id: 'compare', title: 'Больше-меньше', icon: '<>', cat: 'karamelka', color: '#B388FF', levels: [
     { desc: 'до 10', gen: () => compareTask(10, true) },
     { desc: 'до 20', gen: () => compareTask(20, false) },
     { desc: 'до 100', gen: () => compareTask(99, false, 10) },
     { desc: 'примеры', gen: () => compareExpr() },
   ] },
-  { id: 'add', title: 'Сложение', icon: '+', cat: 'timka', color: '#4CD07D', levels: [
+  { id: 'add', title: 'Сложение', icon: '+', cat: 'korzhik', color: '#4CD07D', levels: [
     { desc: 'до 5', gen: () => addSmall(5, true) },
     { desc: 'до 10', gen: () => addSmall(10, true, 4) },
     { desc: 'до 10 в уме', gen: () => addSmall(10, false, 4) },
@@ -481,7 +481,7 @@ export const TOPICS = [
     { desc: 'до 100', gen: () => addBig(false) },
     { desc: 'двузначные', gen: () => addBig(true) },
   ] },
-  { id: 'sub', title: 'Вычитание', icon: '−', cat: 'timka', color: '#FF7A7A', levels: [
+  { id: 'sub', title: 'Вычитание', icon: '−', cat: 'korzhik', color: '#FF7A7A', levels: [
     { desc: 'до 5', gen: () => subSmall(5, true) },
     { desc: 'до 10', gen: () => subSmall(10, true, 4) },
     { desc: 'до 10 в уме', gen: () => subSmall(10, false, 4) },
@@ -489,26 +489,26 @@ export const TOPICS = [
     { desc: 'до 100', gen: () => subBig(false) },
     { desc: 'двузначные', gen: () => subBig(true) },
   ] },
-  { id: 'missing', title: 'Найди число', icon: '□', cat: 'timka', color: '#4FC3F7', levels: [
+  { id: 'missing', title: 'Найди число', icon: '□', cat: 'korzhik', color: '#4FC3F7', levels: [
     { desc: 'состав числа', gen: () => missingAddSub(10, false, true) },
     { desc: 'до 20', gen: () => missingAddSub(20, false, false) },
     { desc: 'до 100', gen: () => missingAddSub(100, true, false) },
     { desc: '× и ÷', gen: () => missingMulDiv() },
   ] },
-  { id: 'pattern', title: 'Закономерности', icon: '🧩', cat: 'romashka', color: '#FFD54F', levels: [
+  { id: 'pattern', title: 'Закономерности', icon: '🧩', cat: 'karamelka', color: '#FFD54F', levels: [
     { desc: '+1 и −1', gen: () => patternTask(1) },
     { desc: 'шагами', gen: () => patternTask(2) },
     { desc: 'большие шаги', gen: () => patternTask(3) },
     { desc: 'хитрые', gen: () => patternTask(4) },
   ] },
-  { id: 'mul', title: 'Умножение', icon: '×', cat: 'ryzhik', color: '#FF8A65', levels: [
+  { id: 'mul', title: 'Умножение', icon: '×', cat: 'kompot', color: '#FF8A65', levels: [
     { desc: 'по 2', gen: () => mulGroups([2], 5, true) },
     { desc: 'по 2, 3, 5, 10', gen: () => mulGroups([2, 3, 5, 10], 5, true) },
     { desc: 'до 5 × 5', gen: () => mulGroups([2, 3, 4, 5], 5, false) },
     { desc: 'вся таблица', gen: () => { const t = mulGroups([2, 3, 4, 5, 6, 7, 8, 9], 9, false, true); return t; } },
     { desc: 'большие', gen: () => mulBig() },
   ] },
-  { id: 'div', title: 'Деление', icon: '÷', cat: 'ryzhik', color: '#9575CD', levels: [
+  { id: 'div', title: 'Деление', icon: '÷', cat: 'kompot', color: '#9575CD', levels: [
     { desc: 'на 2 и 3', gen: () => divShare([2, 3], 4, true) },
     { desc: 'до 5', gen: () => divShare([2, 3, 4, 5], 5, true) },
     { desc: 'до 50', gen: () => divShare([2, 3, 4, 5], 10, false, false, 2) },
@@ -521,7 +521,7 @@ export const TOPICS = [
     { desc: '× и ÷', gen: () => storyMulDiv() },
     { desc: 'в 2 действия', gen: () => storyTwoStep() },
   ] },
-  { id: 'mix', title: 'Профессор', icon: '🎓', cat: 'ryzhik', color: '#64B5F6', levels: [
+  { id: 'mix', title: 'Профессор', icon: '🎓', cat: 'kompot', color: '#64B5F6', levels: [
     { desc: '+ и − подряд', gen: () => mix(1) },
     { desc: '× и +', gen: () => mix(2) },
     { desc: 'что сначала?', gen: () => mix(3) },

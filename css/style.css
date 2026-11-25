@@ -93,7 +93,7 @@ h1, h2 { margin: 0; }
   position: relative; z-index: 1; text-align: center; line-height: .95;
   font-size: clamp(2.4rem, 9vmin, 5.5rem); font-weight: 900; color: #fff; letter-spacing: .02em;
   text-shadow: 0 4px 0 var(--accent2), 0 8px 18px rgba(0,0,0,.2);
-  margin-top: -2vmin;
+  margin: 1vh 0 auto;
 }
 .title span { font-size: .62em; color: #FFF3C4; }
 .hill {
@@ -104,9 +104,9 @@ h1, h2 { margin: 0; }
 .trio { position: absolute; left: 50%; transform: translateX(-50%); bottom: 55%; display: flex; align-items: flex-end; gap: 1vmin; }
 .cat-wrap { cursor: pointer; }
 .cat-wrap svg { display: block; height: 100%; width: auto; }
-#trio .cat-wrap[data-cat="ryzhik"] { height: min(42vh, 55vw); }
-#trio .cat-wrap[data-cat="romashka"] { height: min(32vh, 42vw); }
-#trio .cat-wrap[data-cat="timka"] { height: min(35vh, 46vw); }
+#trio .cat-wrap[data-cat="kompot"] { height: min(44vh, 56vw); }
+#trio .cat-wrap[data-cat="karamelka"] { height: min(30vh, 39vw); }
+#trio .cat-wrap[data-cat="korzhik"] { height: min(36vh, 47vw); }
 #trio .cat-wrap svg { animation: idle 3s ease-in-out infinite; }
 #trio .cat-wrap:nth-child(2) svg { animation-delay: -1s; }
 #trio .cat-wrap:nth-child(3) svg { animation-delay: -2s; }
@@ -363,8 +363,8 @@ h1, h2 { margin: 0; }
 .result-fish { font-size: clamp(1.3rem, 4vmin, 2rem); font-weight: 800; margin: 0; }
 .trio.small { position: static; transform: none; height: clamp(110px, 22vh, 200px); display: flex; gap: 8px; justify-content: center; }
 .trio.small .cat-wrap { height: 100%; }
-.trio.small .cat-wrap[data-cat="romashka"] { height: 80%; }
-.trio.small .cat-wrap[data-cat="timka"] { height: 85%; }
+.trio.small .cat-wrap[data-cat="karamelka"] { height: 74%; }
+.trio.small .cat-wrap[data-cat="korzhik"] { height: 85%; }
 .result-btns { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; margin-top: 6px; }
 
 /* ---------- аквариум ---------- */
