@@ -540,14 +540,16 @@ const SPECIES = [
   { e: '🐟', at: 0 }, { e: '🐠', at: 15 }, { e: '🐡', at: 40 }, { e: '🦀', at: 70 },
   { e: '🐙', at: 110 }, { e: '🐢', at: 160 }, { e: '🦈', at: 230 }, { e: '🐳', at: 320 },
 ];
+const SEAWEED_SVG = '<svg viewBox="0 0 64 80" width="56" height="70" aria-hidden="true"><path d="M22 78 C 12 58, 28 42, 16 20 C 12 12, 18 6, 24 14 C 34 32, 22 50, 30 78 Z" fill="#2EB85C" stroke="#1B7A3B" stroke-width="2.5"/><path d="M40 78 C 52 56, 36 38, 48 14 C 52 6, 44 4, 38 14 C 28 36, 42 54, 34 78 Z" fill="#46D66E" stroke="#1B7A3B" stroke-width="2.5"/></svg>';
+const CORAL_SVG = '<svg viewBox="0 0 72 68" width="62" height="58" aria-hidden="true"><path d="M36 64 V32 M36 44 C26 42, 18 34, 16 22 M24 34 C16 32, 10 26, 8 18 M36 38 C46 36, 54 28, 56 16 M48 30 C56 28, 62 22, 64 14 M36 32 C34 22, 32 14, 36 8" fill="none" stroke="#FF6B7A" stroke-width="9" stroke-linecap="round"/><path d="M36 64 V32 M36 44 C26 42, 18 34, 16 22 M24 34 C16 32, 10 26, 8 18 M36 38 C46 36, 54 28, 56 16 M48 30 C56 28, 62 22, 64 14 M36 32 C34 22, 32 14, 36 8" fill="none" stroke="#FF949E" stroke-width="4" stroke-linecap="round"/></svg>';
 function renderAquarium() {
   const tank = $('#tank');
   tank.querySelectorAll('.swim, .weed').forEach((n) => n.remove());
   const open = SPECIES.filter((s) => S.fish >= s.at);
   const count = Math.min(S.fish, 36);
   for (let i = 0; i < 5; i++) {
-    const w = document.createElement('span'); w.className = 'weed'; w.textContent = i % 2 ? '🌿' : '🪸';
-    w.style.left = 6 + i * 21 + Math.random() * 6 + '%'; tank.appendChild(w);
+    const w = document.createElement('span'); w.className = 'weed'; w.innerHTML = i % 2 ? SEAWEED_SVG : CORAL_SVG;
+    w.style.left = 6 + i * 21 + Math.random() * 6 + '%'; w.style.animationDelay = (-i * 0.7) + 's'; tank.appendChild(w);
   }
   for (let i = 0; i < count; i++) {
     const sp = i < open.length ? open[open.length - 1 - i] : open[Math.floor(Math.random() * open.length)];

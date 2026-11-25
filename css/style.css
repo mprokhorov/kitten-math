@@ -374,7 +374,8 @@ h1, h2 { margin: 0; }
   box-shadow: inset 0 0 0 8px rgba(255,255,255,.5), 0 10px 30px rgba(0,0,0,.2);
 }
 .sand { position: absolute; left: 0; right: 0; bottom: 0; height: 12%; background: linear-gradient(#F6E0A8, #E8C77A); border-radius: 50% 50% 0 0 / 30% 30% 0 0; }
-.weed { position: absolute; bottom: 4%; font-size: 3rem; transform-origin: bottom center; animation: sway 3s ease-in-out infinite; z-index: 1; }
+.weed { position: absolute; bottom: 5%; transform-origin: bottom center; animation: sway 3s ease-in-out infinite; z-index: 1; }
+.weed svg { display: block; height: clamp(46px, 10vmin, 76px); width: auto; }
 @keyframes sway { 50% { transform: rotate(8deg); } }
 .swim { position: absolute; left: 0; z-index: 2; cursor: pointer; animation: swimL linear infinite; will-change: transform; }
 .swim.right { animation-name: swimR; }
