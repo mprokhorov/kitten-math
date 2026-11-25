@@ -1,5 +1,5 @@
 // Офлайн-кэш. При изменении файлов увеличьте номер версии.
-const CACHE = 'kitten-math-v4';
+const CACHE = 'kitten-math-v5';
 const ASSETS = [
   './', 'index.html', 'manifest.webmanifest',
   'css/style.css', 'js/app.js', 'js/cats.js', 'js/tasks.js',

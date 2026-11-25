@@ -325,7 +325,7 @@ function story(text, answer, o = {}) {
   return {
     tokens: [SLOT], answer, story: text, speak: text,
     input: o.pad ? 'pad' : 'choices', choices: o.pad ? null : makeChoices(answer),
-    visual: o.visual || null, showVisual: !!o.showVisual, hint: o.hint || null, bubble: 'Послушай задачку!',
+    visual: o.visual || null, showVisual: !!o.showVisual, hint: o.hint || null, bubble: 'Реши задачку!',
     storyCats: o.cats || null,
   };
 }
